@@ -41,9 +41,33 @@ public class CarritoServiceImpl extends CarritoServiceImplBase {
                 .setPrecio(25.0)
                 .setCantidad(20)
                 .build();
+        
+        Producto p3 = Producto.newBuilder()
+                .setId("PROD-003")
+                .setNombre("Monitor")
+                .setPrecio(1000.0)
+                .setCantidad(10)
+                .build();
+        
+        Producto p4 = Producto.newBuilder()
+                .setId("PROD-004")
+                .setNombre("Audífonos")
+                .setPrecio(200.0)
+                .setCantidad(50)
+                .build();
+        
+        Producto p5 = Producto.newBuilder()
+                .setId("PROD-005")
+                .setNombre("Cargador")
+                .setPrecio(350.0)
+                .setCantidad(15)
+                .build();
 
         inventario.put(p1.getId(), p1);
         inventario.put(p2.getId(), p2);
+        inventario.put(p3.getId(), p3);
+        inventario.put(p4.getId(), p4);
+        inventario.put(p5.getId(), p5);
     }
 
     @Override
