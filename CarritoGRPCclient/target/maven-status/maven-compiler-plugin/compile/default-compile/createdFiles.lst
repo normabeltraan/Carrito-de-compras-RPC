@@ -26,6 +26,7 @@ com\carritogrpcclient\CarritoGRPCclient.class
 com\tienda\grpc\CarritoServiceGrpc$CarritoServiceStub.class
 com\tienda\grpc\NadaRequest.class
 com\tienda\grpc\CarritoRequest.class
+gui\CatalogoFrame$3.class
 com\tienda\grpc\CarritoServiceGrpc$CarritoServiceImplBase.class
 com\tienda\grpc\NadaRequest$1.class
 gui\CatalogoFrame$2.class

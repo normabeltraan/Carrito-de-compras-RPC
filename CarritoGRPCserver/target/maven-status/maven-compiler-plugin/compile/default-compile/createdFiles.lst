@@ -20,6 +20,7 @@ com\tienda\grpc\CarritoServiceGrpc$2.class
 com\tienda\grpc\CarritoServiceGrpc$CarritoServiceFutureStub.class
 com\tienda\grpc\CarritoServiceGrpc$MethodHandlers.class
 com\tienda\grpc\CatalogoResponse$1.class
+gui\InventarioFrame$1.class
 com\tienda\grpc\CatalogoResponse.class
 com\carritogrpc\CarritoServiceImpl.class
 com\tienda\grpc\CarritoServiceGrpc$CarritoServiceMethodDescriptorSupplier.class

@@ -15,12 +15,13 @@ import javax.swing.table.DefaultTableModel;
 public class InventarioFrame extends javax.swing.JFrame {
 
     private DefaultTableModel modelo;
-    
+
     /**
      * Creates new form InventarioFrame
      */
     public InventarioFrame() {
         initComponents();
+        mejorarTabla();
         this.modelo = (DefaultTableModel) tablaInventario.getModel();
     }
 
@@ -32,7 +33,7 @@ public class InventarioFrame extends javax.swing.JFrame {
                 p.getId(),
                 p.getNombre(),
                 p.getPrecio(),
-                p.getCantidad() 
+                p.getCantidad()
             };
             modelo.addRow(fila);
         }
@@ -85,7 +86,41 @@ public class InventarioFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mejorarTabla() {
+        // Cambiar fuente y tamaño de la tabla
+        tablaInventario.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
+        tablaInventario.setRowHeight(25);
 
+        // Colorear encabezado
+        tablaInventario.getTableHeader().setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 16));
+        tablaInventario.getTableHeader().setBackground(new java.awt.Color(60, 63, 65)); // gris oscuro
+        tablaInventario.getTableHeader().setForeground(new java.awt.Color(255, 255, 255)); // blanco
+
+        // Colorear filas alternadas
+        tablaInventario.setDefaultRenderer(Object.class, new javax.swing.table.DefaultTableCellRenderer() {
+            @Override
+            public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
+                    boolean isSelected, boolean hasFocus,
+                    int row, int column) {
+                super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (isSelected) {
+                    setBackground(new java.awt.Color(100, 149, 237)); // azul selección
+                    setForeground(java.awt.Color.WHITE);
+                } else {
+                    setBackground(row % 2 == 0 ? new java.awt.Color(245, 245, 245) : java.awt.Color.WHITE);
+                    setForeground(java.awt.Color.BLACK);
+                }
+                return this;
+            }
+        });
+
+        // Quitar líneas de cuadrícula o hacerlas más sutiles
+        tablaInventario.setShowGrid(true);
+        tablaInventario.setGridColor(new java.awt.Color(220, 220, 220));
+        tablaInventario.getTableHeader().setReorderingAllowed(false);
+        tablaInventario.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaInventario;

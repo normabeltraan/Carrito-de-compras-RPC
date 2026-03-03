@@ -27,11 +27,13 @@ public class CatalogoFrame extends javax.swing.JFrame {
     public CatalogoFrame(CarritoServiceGrpc.CarritoServiceBlockingStub stub) {
         this.stub = stub;
         initComponents();
-        this.modelo = (DefaultTableModel) tablaCatalogo.getModel();    
+        this.modelo = (DefaultTableModel) tablaCatalogo.getModel();
         this.modelo.setRowCount(0);
         textCantidad.setText("");
         lblSubtotal.setText("Subtotal: $0.00");
         cargarCatalogo();
+        generarPresentacion();
+
     }
 
     public void cargarCatalogo() {
@@ -236,7 +238,69 @@ public class CatalogoFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnComprarActionPerformed
 
+    private void generarPresentacion() {
+        textCantidad.setText("");
 
+        decorarTabla();
+        decorarBotones();
+        textCantidad.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 200, 200)),
+                javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5)
+        ));
+
+        lblSubtotal.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 18));
+        lblSubtotal.setText("<html>Total a pagar: <b style='color:#0078D7;'>$0.00</b></html>");
+        
+        this.getContentPane().setBackground(java.awt.Color.WHITE); // Fondo blanco limpio
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        
+        decorarComboBox();
+    }
+    
+    private void decorarTabla() {
+        tablaCatalogo.setRowHeight(30); 
+        tablaCatalogo.setShowVerticalLines(false); 
+        tablaCatalogo.setFocusable(false);
+        tablaCatalogo.setSelectionBackground(new java.awt.Color(232, 242, 254)); 
+        tablaCatalogo.setSelectionForeground(java.awt.Color.BLACK);
+        tablaCatalogo.getTableHeader().setReorderingAllowed(false); 
+        tablaCatalogo.getTableHeader().setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 12));
+        tablaCatalogo.getTableHeader().setBackground(java.awt.Color.WHITE);
+        
+        tablaCatalogo.getTableHeader().setReorderingAllowed(false);
+        tablaCatalogo.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+    }
+    
+    private void decorarBotones() {
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setBackground(java.awt.Color.WHITE);
+        btnAgregar.setFocusPainted(false);
+        
+        btnComprar.setBackground(new java.awt.Color(0, 120, 215)); // Azul Windows moderno
+        btnComprar.setForeground(java.awt.Color.WHITE);
+        btnComprar.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 13));
+        btnComprar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnComprar.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20));
+    }
+    
+    private void decorarComboBox() {
+        comboBoxCatalogo.setFocusable(false);
+        comboBoxCatalogo.setBackground(new java.awt.Color(245, 245, 250)); 
+        
+        comboBoxCatalogo.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(javax.swing.JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                javax.swing.JLabel label = (javax.swing.JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                label.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 12, 8, 12)); // Padding interno
+                if (isSelected) {
+                    label.setBackground(new java.awt.Color(0, 120, 215));
+                    label.setForeground(java.awt.Color.WHITE);
+                }
+                return label;
+            }
+        });
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnComprar;
